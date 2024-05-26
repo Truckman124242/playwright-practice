@@ -206,6 +206,9 @@ test.describe("Registration tests", () => {
       await signInForm.fillCorrectSignInCredentials(correctEmail, correctPassword);
       await signInForm.clickOnButton(signInForm.loginAccountButton);
       await settingsPage.removeTheUserAccount();
+      // await settingsPage.clickOnButton(settingsPage.accountSettingsButton);
+      // await settingsPage.clickOnButton(settingsPage.accountRemoveButton)
+      // await settingsPage.clickOnButton(settingsPage.confirmDeleteButton)
     });
 
     // test("User account is being removed", async ({ page }) => {

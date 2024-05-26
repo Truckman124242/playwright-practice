@@ -15,10 +15,22 @@ export class SettingsPage {
       .getByText("Guest log in");
   }
 
+
   async removeTheUserAccount() {
     await this.accountSettingsButton.click();
     await this.accountRemoveButton.click();
     await this.confirmDeleteButton.click();
     await expect(this.guestLogInButton).toBeVisible();
   }
+  
+//   async openSettingsPage() {
+//     await this.accountSettingsButton.click();
+//   }
+
+//   async removeTheUserAccount() {
+//     await this.accountSettingsButton.click();
+//     await this.accountRemoveButton.click();
+//     await this.confirmDeleteButton.click();
+//     await expect(this.guestLogInButton).toBeVisible();
+//   }
 }
