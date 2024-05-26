@@ -18,13 +18,20 @@ export class SignInForm {
     this.loginAccountButton = page.locator(".btn").getByText("Login");
   }
 
-  async openSignInForm() {
-    await this.signInButton.click();
-  }
-
-  async checkSignIn(email: string, password: string) {
+  async fillCorrectSignInCredentials(email: string, password: string) {
     await this.signInEmail.fill(email);
     await this.signInPassword.fill(password);
-    await this.loginAccountButton.click();
+  }
+
+  async clickOnButton(button:Locator) {
+    await button.click();
   }
 }
+
+//   async openSignInForm() {
+//     await this.signInButton.click();
+//   }
+
+//   async clickOnSignInButton() {
+//     await this.loginAccountButton.click();
+//   }

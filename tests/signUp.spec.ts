@@ -27,7 +27,8 @@ test.beforeEach(async ({ page }) => {
   signInForm = new SignInForm(page);
   garagePage = new GaragePage(page);
   settingsPage = new SettingsPage(page);
-  await signUpForm.openSignUpForm();
+  await signUpForm.page.goto("/");
+  await signUpForm.clickOnButton(signUpForm.signUpButton);
 });
 
 test.describe("Name field tests", () => {
@@ -182,7 +183,7 @@ test.describe("Registration tests", () => {
       correctEmail,
       correctPassword
     );
-    await signUpForm.clickOnSignUpButton();
+    await signUpForm.clickOnButton(signUpForm.registerButton);
     await garagePage.checkGaragePageVisibility();
   });
   test("Error message appears when signing up as user with already existing email", async ({
@@ -194,16 +195,26 @@ test.describe("Registration tests", () => {
       correctEmail,
       correctPassword
     );
-    await signUpForm.clickOnSignUpButton();
+    await signUpForm.clickOnButton(signUpForm.registerButton);
     await signUpForm.checkAlertVisibility(signUpForm.existingUserAlert);
   });
 
   test.describe("Account deletion test", () => {
     test("User account is being removed", async ({ page }) => {
-      await signUpForm.closeSignupForm();
-      await signInForm.openSignInForm();
-      await signInForm.checkSignIn(correctEmail, correctPassword);
+      await signUpForm.clickOnButton(signUpForm.closeButton);
+      await signInForm.clickOnButton(signInForm.signInButton);
+      await signInForm.fillCorrectSignInCredentials(correctEmail, correctPassword);
+      await signInForm.clickOnButton(signInForm.loginAccountButton);
       await settingsPage.removeTheUserAccount();
     });
+
+    // test("User account is being removed", async ({ page }) => {
+    //   await signUpForm.closeSignupForm();
+    //   await signInForm.openSignInForm();
+    //   await signInForm.fillCorrectSignInCredentials(correctEmail, correctPassword);
+    //   await signInForm.clickOnSignInButton();
+    //   await settingsPage.removeTheUserAccount();
+    // });
+
   });
 });

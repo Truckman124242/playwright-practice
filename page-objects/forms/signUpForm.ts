@@ -61,11 +61,6 @@ export class SignUpForm {
     this.existingUserAlert = page.getByText("User already exists");
   }
 
-  async openSignUpForm() {
-    await this.page.goto("/");
-    await this.signUpButton.click();
-  }
-
   async triggerBlurForField(interactLocator: Locator) {
     await interactLocator.click();
     await interactLocator.blur();
@@ -103,12 +98,15 @@ export class SignUpForm {
     await this.passwordField.fill(password);
     await this.repeatPasswordField.fill(password);
   }
+  async clickOnButton(button:Locator) {
+    await button.click();
+    
+//   async clickOnSignUpButton() {
+//     await this.registerButton.click();
+//   }
 
-  async clickOnSignUpButton() {
-    await this.registerButton.click();
-  }
-
-  async closeSignupForm() {
-    await this.closeButton.click();
+//   async closeSignupForm() {
+//     await this.closeButton.click();
+//   }
   }
 }
