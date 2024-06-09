@@ -15,7 +15,7 @@ test.beforeEach(async ({ page }) => {
   await signInForm.clickOnButton(signInForm.loginAccountButton);
 });
 
-test.describe("Adding car tests", () => {
+test.describe("Garage page elements tests", () => {
   test("Add car button is visible", async ({ page }) => {
     await garagePage.checkAddCarButtonVisibility();
   });
@@ -41,7 +41,9 @@ test.describe("Adding car tests", () => {
     await garagePage.addingCarMileage("99999999");
     await garagePage.mileageErrorMessageAppears();
   });
+});
 
+test.describe("Add car tests", () => {
   test("new car is added", async ({ page }) => {
     await garagePage.openingAddCarModal();
     await garagePage.addingCarMileage("3550");
@@ -51,7 +53,9 @@ test.describe("Adding car tests", () => {
   test("Only one car is present", async ({ page }) => {
     await garagePage.specificCarAmountIsAdded(1);
   });
+});
 
+test.describe("Update car tests", () => {
   test("Mileage is updated for the car", async ({ page }) => {
     await garagePage.updateCarMileage("4500");
   });
