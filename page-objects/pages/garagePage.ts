@@ -29,6 +29,8 @@ export class GaragePage {
   readonly addedCarMessage: Locator;
   readonly updatedCarMessage: Locator;
   readonly saveChangesButton: Locator;
+ 
+
 
   constructor(page: Page) {
     this.page = page;
@@ -56,7 +58,7 @@ export class GaragePage {
     this.litersNumberField = page.locator("#addExpenseLiters");
     this.totalCostField = page.locator("#addExpenseTotalCost");
     this.addedExpenseMessage = page.getByText("Fuel expense added");
-    this.editCarButton = page.locator(".car_edit");
+    this.editCarButton = page.locator(".icon-edit");
     this.editCarModal = page.locator(".modal-content").getByText("Edit a car");
     this.createdAtField = page.locator("#carCreationDate");
     this.removeCarButton = page.locator(".btn").getByText("Remove car");
@@ -109,13 +111,13 @@ export class GaragePage {
     await expect(this.addedCarMessage).toBeVisible();
   }
 
-  async specificCarAmountIsAdded(carCount: number) {
-    await expect(this.page.locator(".icon-edit")).toHaveCount(carCount);
-  }
-
   async mileageErrorMessageAppears() {
     await this.carMileageField.blur();
     await expect(this.mileageErrorMessage).toBeVisible();
+  }
+
+  async specificCarAmountIsAdded(carCount: number) {
+    await expect(this.editCarButton).toHaveCount(carCount);
   }
 
   async updateCarMileage(mileageAmount: string) {
@@ -153,15 +155,6 @@ export class GaragePage {
     await expect(this.updatedCarMessage).toBeVisible();
   }
 
-  async changingBrand(brandName: string) {
-    await this.carBrandField.click();
-    await this.page.locator(".form-control").getByText(brandName).click;
-  }
-
-  async changingModel(modelName: string) {
-    await this.carModelField.click();
-    await this.page.locator(".form-control").getByText(modelName).click;
-  }
 
   async removingTheCar() {
     await this.removeCarButton.click();

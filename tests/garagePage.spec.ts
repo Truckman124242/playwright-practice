@@ -70,7 +70,7 @@ test.describe("Adding car tests", () => {
     await garagePage.openingEditCarModal();
     await garagePage.changingCarCreatedDate("15.03.2022");
   });
-
+  
   test("Remove car", async ({ page }) => {
     await garagePage.openingEditCarModal();
     await garagePage.removingTheCar();
