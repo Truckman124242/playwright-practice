@@ -155,7 +155,6 @@ export class GaragePage {
     await expect(this.updatedCarMessage).toBeVisible();
   }
 
-
   async removingTheCar() {
     await this.removeCarButton.click();
     await this.confirmCarRemoveButton.click();
