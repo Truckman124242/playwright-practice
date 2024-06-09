@@ -35,25 +35,25 @@ test.describe("Name field tests", () => {
   test("Name required message appears for empty Name field", async ({
     page,
   }) => {
-    await signUpForm.triggerBlurForField(signUpForm.NameField);
+    await signUpForm.triggerBlurForField(signUpForm.nameField);
     await signUpForm.checkAlertVisibility(signUpForm.nameRequiredAlert);
   });
   test("Invalid name message appears when entering invalid Name value", async ({
     page,
   }) => {
-    await signUpForm.fillSignUpField(signUpForm.NameField, incorrectName);
-    await signUpForm.triggerBlurForField(signUpForm.NameField);
+    await signUpForm.fillSignUpField(signUpForm.nameField, incorrectName);
+    await signUpForm.triggerBlurForField(signUpForm.nameField);
     await signUpForm.checkAlertVisibility(signUpForm.nameNotValidAlert);
   });
   test("Name length message appears when entering 1 character for Name field", async ({
     page,
   }) => {
-    await signUpForm.fillSignUpField(signUpForm.NameField, shortName);
-    await signUpForm.triggerBlurForField(signUpForm.NameField);
+    await signUpForm.fillSignUpField(signUpForm.nameField, shortName);
+    await signUpForm.triggerBlurForField(signUpForm.nameField);
     await signUpForm.checkAlertVisibility(signUpForm.nameLengthAlert);
   });
   test("Name field border color is red", async ({ page }) => {
-    await signUpForm.triggerBlurForField(signUpForm.NameField);
+    await signUpForm.triggerBlurForField(signUpForm.nameField);
     await signUpForm.checkElementBorderColor(signUpForm.nameRequiredAlert);
   });
 });

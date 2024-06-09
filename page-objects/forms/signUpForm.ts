@@ -3,7 +3,7 @@ import { expect, type Locator, type Page } from "@playwright/test";
 export class SignUpForm {
   readonly page: Page;
   readonly signUpButton: Locator;
-  readonly NameField: Locator;
+  readonly nameField: Locator;
   readonly nameRequiredAlert: Locator;
   readonly nameNotValidAlert: Locator;
   readonly nameLengthAlert: Locator;
@@ -31,7 +31,7 @@ export class SignUpForm {
     this.passwordField = page.getByLabel("Password");
     this.loginButton = page.getByRole("button", { name: "Login" });
     this.signUpButton = page.getByText("Sign up");
-    this.NameField = page.locator("#signupName");
+    this.nameField = page.locator("#signupName");
     this.nameRequiredAlert = page.getByText("Name required");
     this.nameNotValidAlert = page.getByText("Name is invalid");
     this.nameLengthAlert = page.getByText(
@@ -92,7 +92,7 @@ export class SignUpForm {
     email: string,
     password: string
   ) {
-    await this.NameField.fill(name);
+    await this.nameField.fill(name);
     await this.lastNameField.fill(lastName);
     await this.emailField.fill(email);
     await this.passwordField.fill(password);
@@ -100,7 +100,7 @@ export class SignUpForm {
   }
   async clickOnButton(button:Locator) {
     await button.click();
-    
+
 //   async clickOnSignUpButton() {
 //     await this.registerButton.click();
 //   }
