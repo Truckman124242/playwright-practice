@@ -1,17 +1,14 @@
 import { test } from "@playwright/test";
 import { GaragePage } from "../page-objects/pages/garagePage";
-import { SettingsPage } from "../page-objects/pages/settingsPage";
 import { SignInForm } from "../page-objects/forms/signInForm";
 import { correctEmail, correctPassword } from "../test-data/credentials";
 
 let signInForm: SignInForm;
-let settingsPage: SettingsPage;
 let garagePage: GaragePage;
 
 test.beforeEach(async ({ page }) => {
   signInForm = new SignInForm(page);
   garagePage = new GaragePage(page);
-  settingsPage = new SettingsPage(page);
   await signInForm.page.goto("/");
   await signInForm.clickOnButton(signInForm.signInButton);
   await signInForm.fillCorrectSignInCredentials(correctEmail, correctPassword);
@@ -70,7 +67,7 @@ test.describe("Adding car tests", () => {
     await garagePage.openingEditCarModal();
     await garagePage.changingCarCreatedDate("15.03.2022");
   });
-  
+
   test("Remove car", async ({ page }) => {
     await garagePage.openingEditCarModal();
     await garagePage.removingTheCar();

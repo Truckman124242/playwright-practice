@@ -30,8 +30,6 @@ export class GaragePage {
   readonly updatedCarMessage: Locator;
   readonly saveChangesButton: Locator;
  
-
-
   constructor(page: Page) {
     this.page = page;
     this.garageTitle = page.locator(".panel-page_heading").getByText("Garage");
